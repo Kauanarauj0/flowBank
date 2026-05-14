@@ -1,0 +1,514 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('img/imagembanco.jpeg');
+    background-size: cover; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Caixa de vidro (Glassmorphism) */
+.caixa-acesso {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f7;
+    border-radius: 15px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(120px);
+}
+
+.caixa-acesso h1 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Estilo dos campos de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 45px 15px 20px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: white;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-group .icone {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Links e Checkbox */
+.opcoes-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.lembrar-senha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botão Branco */
+.btn-principal {
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    color: #000000;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-principal:hover {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color:#fff;
+    transition: 0.5s;
+}
+
+.link-rodape {
+    font-size: 14px;
+}
+
+/* Classe para esconder as telas */
+.escondido {
+    display: none !important;
+}
+
+/* Estilo da tela de sucesso */
+.icone-sucesso {
+    font-size: 70px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.texto-sucesso {
+    font-size: 15px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+
+.dashboard {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: #f5f7fa;
+}
+
+.dashboard.escondido {
+    display: none !important;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #1a237e;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-sidebar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.logo-sidebar i {
+    font-size: 28px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.menu-item {
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
+}
+
+.menu-item:hover, .menu-item.ativo {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.usuario-sidebar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.usuario-sidebar i {
+    font-size: 32px;
+}
+
+.usuario-sidebar small {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.btn-sair {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Conteúdo Dashboard */
+.conteudo {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.header-dashboard h2 {
+    color: #1a237e;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.header-dashboard p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Card Saldo */
+.card-saldo {
+    background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(26, 35, 126, 0.3);
+}
+
+.saldo-info span {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.valor-saldo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0 25px 0;
+}
+
+.valor-saldo strong {
+    font-size: 36px;
+}
+
+.btn-ocultar {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.acoes-rapidas {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-acao {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-acao:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Extrato */
+.extrato {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.extrato-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.extrato-header h3 {
+    color: #1a237e;
+    font-size: 20px;
+}
+
+.lista-transacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.transacao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.transacao:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.icone-transacao {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-transacao.entrada {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.icone-transacao.saida {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.detalhes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalhes strong {
+    color: #1a237e;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.detalhes span {
+    color: #888;
+    font-size: 13px;
+}
+
+.valor {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.valor.entrada {
+    color: #4caf50;
+}
+
+.valor.saida {
+    color: #f44336;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media (max-width: 900px) {
+    body {
+        justify-content: center;
+        padding: 20px;
+        background-position: center;
+    }
+    
+    .caixa-acesso {
+        padding: 30px 20px;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .conteudo {
+        padding: 20px;
+    }
+    
+    .valor-saldo strong {
+        font-size: 28px;
+    }
+    
+    .acoes-rapidas {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   CARD DE COTAÇÕES
+   ========================================= */
+.card-cotacoes {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cotacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cotacoes-header h3 {
+    color: #1a237e;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#ultima-atualizacao {
+    color: #888;
+    font-size: 12px;
+}
+
+.lista-cotacoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cotacao-item {
+    background: #f8f9ff;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e8eaf6;
+}
+
+.moeda-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.moeda-info i {
+    color: #1a237e;
+    font-size: 16px;
+}
+
+.moeda-valor strong {
+    color: #1a237e;
+    font-size: 22px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.variacao {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.variacao.positiva {
+    color: #4caf50;
+    background: #e8f5e9;
+}
+
+.variacao.negativa {
+    color: #f44336;
+    background: #ffebee;
+}
+
+@media (max-width: 768px) {
+    .lista-cotacoes {
+        grid-template-columns: 1fr;
+    }
+}
