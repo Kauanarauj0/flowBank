@@ -82,7 +82,8 @@
             <i class="fa-solid fa-money-bill-wave icone" aria-hidden="true"></i>
         </div>
 
-        <button type="button" class="btn-principal" onclick="trocarTela('tela-sucesso')">Salvar e Concluir</button>
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-dashboard')">Salvar e Acessar Conta</button>
+        
     </div>
 
     <div id="tela-sucesso" class="caixa-acesso escondido">
@@ -265,8 +266,8 @@
             localStorage.setItem('flowbank_email', email);
             localStorage.setItem('flowbank_senha', senha);
 
-            // vai para onboard
-            trocarTela('tela-onboarding');
+            // vai para tela de sucesso
+            trocarTela('tela-sucesso');
         }
 
         // valida login
@@ -285,7 +286,9 @@
                 document.getElementById('saudacao-usuario').innerHTML = `Olá, ${primeiroNome} 👋`;
                 document.getElementById('nome-sidebar').innerText = nomeCompleto;
 
-                trocarTela('tela-dashboard');
+                // vai para configuracao do saldo
+                trocarTela('tela-onboarding');
+
             } else {
                 alert("E-mail ou senha inválidos! Você já criou sua conta?");
             }
