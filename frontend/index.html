@@ -15,23 +15,23 @@
         <h1>Login FlowBank</h1>
 
         <div class="input-group">
-            <input type="text" placeholder="Usuário">
-            <i class="fa-solid fa-user icone"></i>
+            <input type="email" id="login-email" aria-label="Digite seu e-mail" placeholder="E-mail cadastrado">
+            <i class="fa-solid fa-user icone" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="password" placeholder="Senha">
-            <i class="fa-solid fa-lock icone"></i>
+            <input type="password" id="login-senha" aria-label="Digite sua senha" placeholder="Senha">
+            <i class="fa-solid fa-lock icone" aria-hidden="true"></i>
         </div>
 
         <div class="opcoes-extras">
             <label class="lembrar-senha">
-                <input type="checkbox"> Lembrar senha
+                <input type="checkbox" aria-label="Lembrar senha"> Lembrar senha
             </label>
             <a href="#">Esqueci senha</a>
         </div>
 
-        <button type="button" class="btn-principal" onclick="trocarTela('tela-dashboard')">Login</button>
+        <button type="button" class="btn-principal" onclick="fazerLogin()">Login</button>
 
         <div class="link-rodape">
             Não tem uma conta? <a href="javascript:void(0)" onclick="trocarTela('tela-cadastro')">Cadastre-se</a>
@@ -42,165 +42,159 @@
         <h1>Criar uma conta</h1>
 
         <div class="input-group">
-            <input type="text" placeholder="Nome Completo">
-            <i class="fa-solid fa-id-badge icone"></i>
+            <input type="text" id="cadastro-nome" aria-label="Nome Completo" placeholder="Nome Completo">
+            <i class="fa-solid fa-id-badge icone" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="text" placeholder="CPF">
-            <i class="fa-solid fa-address-card icone"></i>
+            <input type="text" aria-label="CPF" placeholder="CPF">
+            <i class="fa-solid fa-address-card icone" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="email" placeholder="E-mail">
-            <i class="fa-solid fa-envelope icone"></i>
+            <input type="email" id="cadastro-email" aria-label="E-mail" placeholder="E-mail">
+            <i class="fa-solid fa-envelope icone" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="password" placeholder="Senha">
-            <i class="fa-solid fa-lock icone"></i>
+            <input type="password" id="cadastro-senha" aria-label="Senha" placeholder="Senha">
+            <i class="fa-solid fa-lock icone" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="password" placeholder="Confirmar senha">
-            <i class="fa-solid fa-check-circle icone"></i>
+            <input type="password" aria-label="Confirmar senha" placeholder="Confirmar senha">
+            <i class="fa-solid fa-check-circle icone" aria-hidden="true"></i>
         </div>
 
-        <button type="button" class="btn-principal" onclick="trocarTela('tela-sucesso')">Criar conta</button>
+        <button type="button" class="btn-principal" onclick="cadastrarUsuario()">Continuar</button>
 
         <div class="link-rodape">
             Já tenho conta. <a href="javascript:void(0)" onclick="trocarTela('tela-login')">Fazer Login</a>
         </div>
     </div>
 
+    <div id="tela-onboarding" class="caixa-acesso escondido">
+        <h1>Boas-vindas!</h1>
+        <p style="margin-bottom: 20px; font-size: 14px; opacity: 0.9;">Vamos configurar sua conta rapidamente. Qual limite diário de transações você deseja?</p>
+        
+        <div class="input-group">
+            <input type="number" aria-label="Definir limite diário" placeholder="Ex: 1000">
+            <i class="fa-solid fa-money-bill-wave icone" aria-hidden="true"></i>
+        </div>
+
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-sucesso')">Salvar e Concluir</button>
+    </div>
+
     <div id="tela-sucesso" class="caixa-acesso escondido">
-        <i class="fa-solid fa-circle-check icone-sucesso"></i>
+        <i class="fa-solid fa-circle-check icone-sucesso" aria-hidden="true"></i>
         
         <h1>Conta criada!</h1>
-        <p class="texto-sucesso">Sua conta foi criada com sucesso. Seja bem-vindo(a) ao FlowBank!</p>
+        <p class="texto-sucesso">Tudo pronto. Seja bem-vindo(a) ao banco digital FlowBank!</p>
         
         <button type="button" class="btn-principal" onclick="trocarTela('tela-login')">Ir para o Login</button>
     </div>
 
-    <script>
-        function trocarTela(idTelaQueQueroMostrar) {
-            // Esconde todas as caixas de acesso
-            const todasAsTelas = document.querySelectorAll('.caixa-acesso');
-            todasAsTelas.forEach(function(tela) {
-                tela.classList.add('escondido');
-            });
-
-            // Mostra apenas a tela solicitada
-            const telaDestino = document.getElementById(idTelaQueQueroMostrar);
-            if (telaDestino) {
-                telaDestino.classList.remove('escondido');
-            }
-        }
-    </script>
     <div id="tela-dashboard" class="dashboard escondido">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" aria-label="Menu Lateral">
             <div class="logo-sidebar">
-                <i class="fa-solid fa-building-columns"></i>
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
                 <span>FlowBank</span>
             </div>
             
             <nav class="menu">
-                <a href="#" class="menu-item ativo">
-                    <i class="fa-solid fa-house"></i> Início
+                <a href="#" class="menu-item ativo" aria-label="Página Inicial">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i> Início
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fa-solid fa-money-bill-transfer"></i> Transferências
+                <a href="#" class="menu-item" aria-label="Transferências">
+                    <i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i> Transferências
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fa-solid fa-credit-card"></i> Cartões
+                <a href="#" class="menu-item" aria-label="Cartões">
+                    <i class="fa-solid fa-credit-card" aria-hidden="true"></i> Cartões
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fa-solid fa-chart-line"></i> Investimentos
+                <a href="#" class="menu-item" aria-label="Investimentos">
+                    <i class="fa-solid fa-chart-line" aria-hidden="true"></i> Investimentos
                 </a>
             </nav>
 
             <div class="usuario-sidebar">
-                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
                 <div>
-                    <strong>Karoline Alves</strong>
+                    <strong id="nome-sidebar">Cliente FlowBank</strong>
                     <small>Ag 0001 • CC 12345-6</small>
                 </div>
             </div>
             
-            <button class="btn-sair" onclick="trocarTela('tela-login')">
-                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            <button class="btn-sair" onclick="trocarTela('tela-login')" aria-label="Sair da conta">
+                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Sair
             </button>
         </aside>
 
-        <!-- Conteúdo Principal -->
         <main class="conteudo">
             <header class="header-dashboard">
-                <h2>Olá, Karoline 👋</h2>
-                <p>Seja bem-vinda de volta</p>
+                <h2 id="saudacao-usuario">Olá 👋</h2>
+                <p>Seja bem-vindo de volta</p>
             </header>
-            <section class="card-cotacoes">
+            
+            <section class="card-cotacoes" aria-label="Cotações de moedas">
                 <div class="cotacoes-header">
-                    <h3><i class="fa-solid fa-chart-line"></i> Cotações em tempo real</h3>
+                    <h3><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Cotações em tempo real</h3>
                     <span id="ultima-atualizacao">Carregando...</span>
                 </div>
     
                 <div class="lista-cotacoes">
                     <div class="cotacao-item">
                         <div class="moeda-info">
-                        <i class="fa-solid fa-dollar-sign"></i>
-                        <span>Dólar</span>
+                            <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
+                            <span>Dólar</span>
+                        </div>
+                        <div class="moeda-valor">
+                            <strong id="usd-valor">--</strong>
+                            <small id="usd-variacao" class="variacao"></small>
+                        </div>
                     </div>
-                    <div class="moeda-valor">
-                        <strong id="usd-valor">--</strong>
-                        <small id="usd-variacao" class="variacao"></small>
+
+                    <div class="cotacao-item">
+                        <div class="moeda-info">
+                            <i class="fa-solid fa-euro-sign" aria-hidden="true"></i>
+                            <span>Euro</span>
+                        </div>
+                        <div class="moeda-valor">
+                            <strong id="eur-valor">--</strong>
+                            <small id="eur-variacao" class="variacao"></small>
+                        </div>
                     </div>
-                </div>
 
-                <div class="cotacao-item">
-                    <div class="moeda-info">
-                        <i class="fa-solid fa-euro-sign"></i>
-                        <span>Euro</span>
-                </div>
-                <div class="moeda-valor">
-                    <strong id="eur-valor">--</strong>
-                    <small id="eur-variacao" class="variacao"></small>
-                </div>
-            </div>
-
-            <div class="cotacao-item">
-                <div class="moeda-info">
-                    <i class="fa-brands fa-bitcoin"></i>
-                    <span>Bitcoin</span>
-                </div>
-                <div class="moeda-valor">
-                    <strong id="btc-valor">--</strong>
-                    <small id="btc-variacao" class="variacao"></small>
-                </div>
-                </div>
+                    <div class="cotacao-item">
+                        <div class="moeda-info">
+                            <i class="fa-brands fa-bitcoin" aria-hidden="true"></i>
+                            <span>Bitcoin</span>
+                        </div>
+                        <div class="moeda-valor">
+                            <strong id="btc-valor">--</strong>
+                            <small id="btc-variacao" class="variacao"></small>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Card de Saldo -->
-            <section class="card-saldo">
+            <section class="card-saldo" aria-label="Saldo da conta">
                 <div class="saldo-info">
                     <span>Saldo disponível</span>
                     <div class="valor-saldo">
                         <strong id="valor">R$ 5.847,32</strong>
-                        <button class="btn-ocultar" onclick="ocultarSaldo()">
-                            <i id="icone-olho" class="fa-solid fa-eye"></i>
+                        <button class="btn-ocultar" onclick="ocultarSaldo()" aria-label="Ocultar saldo">
+                            <i id="icone-olho" class="fa-solid fa-eye" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
                 <div class="acoes-rapidas">
-                    <button class="btn-acao"><i class="fa-solid fa-arrow-up"></i> Transferir</button>
-                    <button class="btn-acao"><i class="fa-solid fa-barcode"></i> Pagar</button>
-                    <button class="btn-acao"><i class="fa-solid fa-pix"></i> Pix</button>
+                    <button class="btn-acao" aria-label="Fazer transferência"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i> Transferir</button>
+                    <button class="btn-acao" aria-label="Pagar boleto"><i class="fa-solid fa-barcode" aria-hidden="true"></i> Pagar</button>
+                    <button class="btn-acao" aria-label="Fazer Pix"><i class="fa-solid fa-pix" aria-hidden="true"></i> Pix</button>
                 </div>
             </section>
 
-            <!-- Extrato -->
-            <section class="extrato">
+            <section class="extrato" aria-label="Extrato de transações">
                 <div class="extrato-header">
                     <h3>Últimos lançamentos</h3>
                     <a href="#">Ver tudo</a>
@@ -209,7 +203,7 @@
                 <div class="lista-transacoes">
                     <div class="transacao">
                         <div class="icone-transacao entrada">
-                            <i class="fa-solid fa-arrow-down"></i>
+                            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
                         </div>
                         <div class="detalhes">
                             <strong>Transferência recebida</strong>
@@ -220,7 +214,7 @@
 
                     <div class="transacao">
                         <div class="icone-transacao saida">
-                            <i class="fa-solid fa-arrow-up"></i>
+                            <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
                         </div>
                         <div class="detalhes">
                             <strong>Pix enviado</strong>
@@ -231,7 +225,7 @@
 
                     <div class="transacao">
                         <div class="icone-transacao saida">
-                            <i class="fa-solid fa-credit-card"></i>
+                            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
                         </div>
                         <div class="detalhes">
                             <strong>Compra no cartão</strong>
@@ -242,7 +236,7 @@
 
                     <div class="transacao">
                         <div class="icone-transacao entrada">
-                            <i class="fa-solid fa-building-columns"></i>
+                            <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
                         </div>
                         <div class="detalhes">
                             <strong>Salário</strong>
@@ -255,28 +249,73 @@
         </main>
     </div>
 
-    <script>
+    <script> // simula login e salva dados no armazenamento  local 
+        function cadastrarUsuario() {
+            const nome = document.getElementById('cadastro-nome').value;
+            const email = document.getElementById('cadastro-email').value;
+            const senha = document.getElementById('cadastro-senha').value;
+
+            if(!nome || !email || !senha) {
+                alert("Preencha seu Nome, E-mail e Senha para continuar.");
+                return;
+            }
+
+            // salva local
+            localStorage.setItem('flowbank_nome', nome);
+            localStorage.setItem('flowbank_email', email);
+            localStorage.setItem('flowbank_senha', senha);
+
+            // vai para onboard
+            trocarTela('tela-onboarding');
+        }
+
+        // valida login
+        function fazerLogin() {
+            const emailDigitado = document.getElementById('login-email').value;
+            const senhaDigitada = document.getElementById('login-senha').value;
+
+            const emailSalvo = localStorage.getItem('flowbank_email');
+            const senhaSalva = localStorage.getItem('flowbank_senha');
+
+            if (emailDigitado === emailSalvo && senhaDigitada === senhaSalva && emailDigitado !== "") {
+
+                const nomeCompleto = localStorage.getItem('flowbank_nome');
+                const primeiroNome = nomeCompleto.split(' ')[0]; // Pega só o primeiro nome
+                
+                document.getElementById('saudacao-usuario').innerHTML = `Olá, ${primeiroNome} 👋`;
+                document.getElementById('nome-sidebar').innerText = nomeCompleto;
+
+                trocarTela('tela-dashboard');
+            } else {
+                alert("E-mail ou senha inválidos! Você já criou sua conta?");
+            }
+        }
+
+        // Esconde todas as caixas de acesso
         function trocarTela(idTelaQueQueroMostrar) {
             const todasAsTelas = document.querySelectorAll('.caixa-acesso, .dashboard');
             todasAsTelas.forEach(function(tela) {
                 tela.classList.add('escondido');
             });
 
+            // Mostra apenas a tela solicitada
             const telaDestino = document.getElementById(idTelaQueQueroMostrar);
             if (telaDestino) {
                 telaDestino.classList.remove('escondido');
             }
 
-            // Ajusta o body pra tela de login vs dashboard
+             // Ajusta o body pra tela de login vs dashboard
             if (idTelaQueQueroMostrar === 'tela-dashboard') {
                 document.body.classList.add('body-dashboard');
+                buscarCotacoes(); // consulta cotacao assim que dashboard e aberto
+                setInterval(buscarCotacoes, 60000); // atualiza cotacao a cada 1min
             } else {
                 document.body.classList.remove('body-dashboard');
             }
         }
 
+       
         let saldoVisivel = true;
-        
         function ocultarSaldo() {
             const valor = document.getElementById('valor');
             const icone = document.getElementById('icone-olho');
@@ -293,74 +332,52 @@
         }
 
         // Busca cotações da API AwesomeAPI - Grátis, sem token
-async function buscarCotacoes() {
-    try {
-        const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
-        const dados = await response.json();
+        async function buscarCotacoes() {
+            try {
+                const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
+                const dados = await response.json();
 
-        // Dólar
-        const usd = dados.USDBRL;
-        document.getElementById('usd-valor').textContent = `R$ ${parseFloat(usd.bid).toFixed(2)}`;
-        atualizarVariacao('usd-variacao', usd.pctChange);
+                // Dólar
+                const usd = dados.USDBRL;
+                document.getElementById('usd-valor').textContent = `R$ ${parseFloat(usd.bid).toFixed(2)}`;
+                atualizarVariacao('usd-variacao', usd.pctChange);
 
-        // Euro
-        const eur = dados.EURBRL;
-        document.getElementById('eur-valor').textContent = `R$ ${parseFloat(eur.bid).toFixed(2)}`;
-        atualizarVariacao('eur-variacao', eur.pctChange);
+                // Euro
+                const eur = dados.EURBRL;
+                document.getElementById('eur-valor').textContent = `R$ ${parseFloat(eur.bid).toFixed(2)}`;
+                atualizarVariacao('eur-variacao', eur.pctChange);
 
-        // Bitcoin - valor em milhares
-        const btc = dados.BTCBRL;
-        const btcValor = parseFloat(btc.bid);
-        document.getElementById('btc-valor').textContent = `R$ ${(btcValor / 1000).toFixed(1)}k`;
-        atualizarVariacao('btc-variacao', btc.pctChange);
+                // Bitcoin - valor em milhares
+                const btc = dados.BTCBRL;
+                const btcValor = parseFloat(btc.bid);
+                document.getElementById('btc-valor').textContent = `R$ ${(btcValor / 1000).toFixed(1)}k`;
+                atualizarVariacao('btc-variacao', btc.pctChange);
 
-        // Atualiza horário
-        const agora = new Date();
-        document.getElementById('ultima-atualizacao').textContent = 
-            `Atualizado às ${agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}`;
+                // Atualiza horário
+                const agora = new Date();
+                document.getElementById('ultima-atualizacao').textContent = 
+                    `Atualizado às ${agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}`;
 
-    } catch (erro) {
-        console.error('Erro ao buscar cotações:', erro);
-        document.getElementById('ultima-atualizacao').textContent = 'Erro ao carregar';
-    }
-}
+            } catch (erro) {
+                console.error('Erro ao buscar cotações:', erro);
+                document.getElementById('ultima-atualizacao').textContent = 'Erro ao carregar';
+            }
+        }
 
-function atualizarVariacao(elementId, pctChange) {
-    const elemento = document.getElementById(elementId);
-    const valor = parseFloat(pctChange);
-    const sinal = valor >= 0 ? '+' : '';
-    elemento.textContent = `${sinal}${valor.toFixed(2)}%`;
-    elemento.className = `variacao ${valor >= 0 ? 'positiva' : 'negativa'}`;
-}
+        function atualizarVariacao(elementId, pctChange) {
+            const elemento = document.getElementById(elementId);
+            const valor = parseFloat(pctChange);
+            const sinal = valor >= 0 ? '+' : '';
+            elemento.textContent = `${sinal}${valor.toFixed(2)}%`;
+            elemento.className = `variacao ${valor >= 0 ? 'positiva' : 'negativa'}`;
+        }
 
-// Chama quando abrir o dashboard
-function trocarTela(idTelaQueQueroMostrar) {
-    const todasAsTelas = document.querySelectorAll('.caixa-acesso, .dashboard');
-    todasAsTelas.forEach(function(tela) {
-        tela.classList.add('escondido');
-    });
-
-    const telaDestino = document.getElementById(idTelaQueQueroMostrar);
-    if (telaDestino) {
-        telaDestino.classList.remove('escondido');
-    }
-
-    if (idTelaQueQueroMostrar === 'tela-dashboard') {
-        document.body.classList.add('body-dashboard');
-        buscarCotacoes(); // Busca cotação ao abrir dashboard
-        setInterval(buscarCotacoes, 60000); // Atualiza a cada 1 min
-    } else {
-        document.body.classList.remove('body-dashboard');
-    }
-}
-
-// Busca cotação ao carregar a página se já estiver no dashboard
-document.addEventListener('DOMContentLoaded', function() {
-    if (!document.getElementById('tela-dashboard').classList.contains('escondido')) {
-        buscarCotacoes();
-    }
-});
+        // Busca cotação ao carregar a página se já estiver no dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('tela-dashboard').classList.contains('escondido')) {
+                buscarCotacoes();
+            }
+        });
     </script>
-
 </body>
 </html>
