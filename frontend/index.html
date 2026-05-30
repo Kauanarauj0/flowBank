@@ -12,6 +12,9 @@
 <body>
 
     <div id="tela-login" class="caixa-acesso">
+
+        <img src="img/imagembanco-2.jpeg" alt="Logo FlowBank" class="logo-pequena">
+
         <h1>Login FlowBank</h1>
 
         <div class="input-group">
@@ -21,7 +24,7 @@
 
         <div class="input-group">
             <input type="password" id="login-senha" aria-label="Digite sua senha" placeholder="Senha">
-            <i class="fa-solid fa-lock icone" aria-hidden="true"></i>
+            <i class="fa-solid fa-eye icone icone-senha" onclick="toggleSenha('login-senha', this)" aria-hidden="true"></i>
         </div>
 
         <div class="opcoes-extras">
@@ -47,7 +50,7 @@
         </div>
 
         <div class="input-group">
-            <input type="text" aria-label="CPF" placeholder="CPF">
+            <input type="text" id="cadastro-cpf" aria-label="CPF" placeholder="CPF" maxlength="14" oninput="mascaraCPF(this)">
             <i class="fa-solid fa-address-card icone" aria-hidden="true"></i>
         </div>
 
@@ -58,12 +61,12 @@
 
         <div class="input-group">
             <input type="password" id="cadastro-senha" aria-label="Senha" placeholder="Senha">
-            <i class="fa-solid fa-lock icone" aria-hidden="true"></i>
+            <i class="fa-solid fa-eye icone icone-senha" onclick="toggleSenha('cadastro-senha', this)" aria-hidden="true"></i>
         </div>
 
         <div class="input-group">
-            <input type="password" aria-label="Confirmar senha" placeholder="Confirmar senha">
-            <i class="fa-solid fa-check-circle icone" aria-hidden="true"></i>
+            <input type="password" id="cadastro-senha-confirm" aria-label="Confirmar senha" placeholder="Confirmar senha">
+            <i class="fa-solid fa-eye icone icone-senha" onclick="toggleSenha('cadastro-senha-confirm', this)" aria-hidden="true"></i>
         </div>
 
         <button type="button" class="btn-principal" onclick="cadastrarUsuario()">Continuar</button>
@@ -261,6 +264,11 @@
                 return;
             }
 
+            if (!validarEmail(email)) {
+                alert("Por favor, digite um e-mail válido (ex: email@dominio.com).");
+                return;
+            }
+
             // salva local
             localStorage.setItem('flowbank_nome', nome);
             localStorage.setItem('flowbank_email', email);
@@ -279,6 +287,11 @@
             const senhaSalva = localStorage.getItem('flowbank_senha');
 
             if (emailDigitado === emailSalvo && senhaDigitada === senhaSalva && emailDigitado !== "") {
+
+                if (!validarEmail(emailDigitado)) {
+                alert("Por favor, digite um formato de e-mail válido.");
+                return;
+            }
 
                 const nomeCompleto = localStorage.getItem('flowbank_nome');
                 const primeiroNome = nomeCompleto.split(' ')[0]; // Pega só o primeiro nome
@@ -381,9 +394,7 @@
                 buscarCotacoes();
             }
         });
-    </script>
 
-    <script>
         // registra o sw para transformar em pwa
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -392,6 +403,33 @@
                     .catch(err => console.log('PWA: Falha ao registrar Service Worker', err));
             });
         }
+
+        // formata cpf
+        function mascaraCPF(cpf) {
+            let valor = cpf.value.replace(/\D/g, ""); 
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2"); 
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2"); 
+            valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); 
+            cpf.value = valor;
+        }
+        // funcao olhinho
+        function toggleSenha(inputId, iconeClicado) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                iconeClicado.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                iconeClicado.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        // Valida se o email tem @ e ponto
+        function validarEmail(email) {
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regexEmail.test(email);
+        }
+
     </script>
 
 </body>
